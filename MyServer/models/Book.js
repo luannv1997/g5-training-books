@@ -28,4 +28,6 @@ const BookSchema = new Schema({
     }
 })
 
+BookSchema.createIndex({title: 'name'})
+
 module.exports = mongoose.model('books', BookSchema)
