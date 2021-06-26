@@ -1,0 +1,42 @@
+POST http://localhost:3000/api/auth/register
+Content-Type: application/json
+
+{
+    "username": "user1",
+    "password": "luan@12345",
+    "firstName": "Nguyen",
+    "lastName": "Luan",
+    "role": "USER"
+}
+
+###
+POST http://localhost:3000/api/auth/login
+Content-Type: application/json
+
+{
+    "username": "LuanNV15",
+    "password": "luan@12345"
+}
+
+###
+POST http://localhost:3000/api/categories
+Content-Type: application/json
+
+{
+    "title": "Category 1"
+}
+
+###
+POST http://localhost:3000/api/books
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MGQwNTc3ZmFkZGM0ZjFiNjA5ODJhNDYiLCJpYXQiOjE2MjQzODkzMTB9.6v1dHUBtNdEJ3xnTjrJ7kvpYJl9-MdV3l6puvzyrWXc
+
+{
+    "title": "ASDAq",
+    "author": "Tokuda",
+    "categoryTitle": "Category 2"
+}
+
+###
+GET http://localhost:3000/api/books
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MGQxYmIzNTViOWZjNzBmNDhkYmY2YTkiLCJpYXQiOjE2MjQzOTA0NTF9.wpMuBl1e6AhdX0jzm3U1sETt2wKattJFspRqFdnx3Bo

@@ -1,0 +1,49 @@
+permissions = [
+    {
+        role: "admin",
+        resources: [
+            {
+                path: "/apis/users",
+                methods: "get push"
+            },
+            {
+                path: "/apis/books",
+                methods: ["patch"]
+            },
+            {
+                path: "/apis/users/:_id",
+                methods: ["patch"]
+            }
+        ]
+    }
+]
+
+handlerCheckPermissions = function (req, res, next) {
+    const role = 'admin';
+    const path = '/apis/users/:_id';
+    const method = 'patch';
+
+    let isAllow = false;
+    permissions.forEach(permission => {
+        if (permission.role === role) {
+            permission.resources.forEach(resource => {
+                if (resource.path === path) {
+                    if (typeof resource.methods === 'string') {
+                        if (resource.methods === '*' || resource.methods.includes(method)) isAllow = true;
+                    }
+                    if (Array.isArray(resource.methods)) {
+                        if (resource.methods.includes(method)) isAllow = true;
+                    }
+                }
+            })
+        }
+    })
+
+    if (isAllow) return next();
+    return res.json(403, {message: "User has not permission"})
+}
+
+// resource 
+// endpoint
+/apis/users
+/apis/books
